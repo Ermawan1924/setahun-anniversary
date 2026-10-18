@@ -1,0 +1,25 @@
+services:
+  anniversary:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: setahun-anniversary:local
+    ports:
+      - "${PORT:-8080}:8080"
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=16m
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      # Edit cerita/foto/musik di host, lalu refresh browser. Tidak perlu rebuild.
+      - ./dist/config.js:/usr/share/nginx/html/config.js:ro
+      - ./dist/assets:/usr/share/nginx/html/assets:ro
+    logging:
+      driver: json-file
+      options:
+        max-size: "5m"
+        max-file: "2"

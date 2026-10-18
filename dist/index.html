@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f7f5ed">
+  <meta name="description" content="Sebuah petualangan kecil untuk merayakan satu tahun cerita kita. Jelajahi pulau, pecahkan teka-teki, dan buka kejutan anniversary.">
+  <title>Setahun — Petualangan Kita</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="config.js"></script>
+  <script defer src="engine.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#adventure">Langsung ke permainan</a>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="Setahun, beranda"><span class="brand-icon">✳</span> setahun<span class="brand-dot">.</span></a>
+    <span class="edition">A LITTLE ADVENTURE FOR TWO</span>
+    <button class="sound-button" id="music-toggle" aria-pressed="false"><span id="sound-icon">♫</span><span id="sound-label">Musik mati</span></button>
+  </header>
+  <main>
+    <section class="intro" aria-labelledby="page-title">
+      <div><p class="eyebrow"><span class="tiny-star">✦</span> OUR FIRST ANNIVERSARY</p><h1 id="page-title">Setahun, dan <em>masih kamu.</em></h1><p id="intro-text" class="intro-text"></p></div>
+      <div class="anniversary-stamp" aria-label="Satu tahun bersama"><span>OUR LITTLE STORY</span><strong>01</strong><span>TAHUN BERSAMA ♡</span></div>
+    </section>
+    <section class="game-layout" id="adventure" aria-label="Petualangan anniversary">
+      <div class="world-panel">
+        <div class="world-toolbar"><span><i class="live-dot"></i> PULAU KENANGAN</span><span id="world-caption">Bab 01 · Awal sebuah cerita</span></div>
+        <div class="canvas-wrap">
+          <canvas id="world" width="960" height="600" tabindex="0" aria-label="Peta pulau. Gunakan WASD atau tombol panah untuk bergerak dan E untuk berinteraksi. Semua tujuan juga tersedia di panel Perjalanan Kita."></canvas>
+          <div class="map-corner"><span>✧</span><small>Satu pulau.<br>Seribu cerita.</small></div>
+          <div class="map-legend"><i></i> kamu <span>·</span> ✦ tujuan berikutnya</div>
+          <button id="interact" class="interact" hidden><kbd>E</kbd><span>Bicara</span><span>↗</span></button>
+          <div class="welcome-card" id="welcome-card"><span class="welcome-symbol">♡</span><p>UNTUK <span id="welcome-name">KAMU</span></p><h2>Cerita kita,<br>jadi petualangan.</h2><p class="welcome-description">Temukan 3 kepingan hati.<br>Ada sesuatu yang menunggumu di ujung pulau.</p><button class="primary" id="start-button">Mulai petualangan <span>→</span></button><small>± 10 menit · main dengan santai</small></div>
+        </div>
+        <div class="world-footer"><span><span class="desktop-controls"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> bergerak <i>·</i> <kbd>E</kbd> interaksi <i>·</i> </span>Klik / ketuk peta untuk berjalan</span><button class="text-button" id="help-button">Cara main ↗</button></div>
+        <div class="touch-controls" aria-label="Kontrol gerak"><button data-move="0,-1" aria-label="Bergerak ke atas">↑</button><div><button data-move="-1,0" aria-label="Bergerak ke kiri">←</button><button data-move="0,1" aria-label="Bergerak ke bawah">↓</button><button data-move="1,0" aria-label="Bergerak ke kanan">→</button></div><span>Atau ketuk tujuan di peta</span></div>
+      </div>
+      <aside class="journey">
+        <div class="journey-heading"><span class="eyebrow">THE LITTLE QUEST</span><h2>Perjalanan kita<span>♡</span></h2><p>Tiga kepingan. Satu cerita yang utuh.</p></div>
+        <div class="heart-progress" id="heart-progress" aria-label="0 dari 3 kepingan hati"><span>♡</span><span>♡</span><span>♡</span><small id="progress-text">0 / 3 terkumpul</small></div>
+        <div id="quest-list" class="quest-list"></div>
+        <div class="final-quest"><span class="final-icon">✉</span><div><strong>Surat di ujung pulau</strong><small id="final-status">Terbuka setelah 3 kepingan</small></div><button id="final-button" aria-label="Menuju surat di mercusuar" disabled>↗</button></div>
+        <div class="journal-note"><span>catatan kecil</span><p id="journal-text">Tidak perlu cepat-cepat.<br>Hal-hal baik layak dinikmati.</p><i>with love, always</i></div>
+      </aside>
+    </section>
+    <footer class="page-footer"><span id="couple-footer">AKU & KAMU <i>✦</i> SINCE 2025</span><div><span id="save-status">Progres tersimpan di perangkat ini</span><button id="reset-button">Ulang cerita ↺</button></div></footer>
+  </main>
+  <dialog id="modal" aria-labelledby="modal-title"><div class="modal-top"><span id="modal-kicker">PETUALANGAN KITA</span><button id="modal-close" aria-label="Tutup jendela">×</button></div><div id="modal-body"></div></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <noscript><p class="noscript">Aktifkan JavaScript untuk memainkan petualangan ini.</p></noscript>
+</body>
+</html>

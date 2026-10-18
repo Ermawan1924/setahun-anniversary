@@ -1,0 +1,8 @@
+{
+  "name": "setahun-petualangan-kita",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Mini game anniversary satu tahun tanpa database dan tanpa build step.",
+  "scripts": { "test": "node --test tests/*.test.cjs", "check": "node --check dist/config.js && node --check dist/engine.js && node --check dist/app.js" },
+  "engines": { "node": ">=18" }
+}

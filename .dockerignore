@@ -1,0 +1,10 @@
+.git
+.openai
+.env
+node_modules
+tests
+*.zip
+*.tar.gz
+*.md
+package.json
+package-lock.json
