@@ -9,6 +9,7 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
   <script defer src="config.js"></script>
+  <script defer src="config-extra.js"></script>
   <script defer src="engine.js"></script>
   <script defer src="app.js"></script>
 </head>
@@ -25,23 +26,23 @@
       <div class="anniversary-stamp" aria-label="Satu tahun bersama"><span>OUR LITTLE STORY</span><strong>01</strong><span>TAHUN BERSAMA ♡</span></div>
     </section>
     <section class="game-layout" id="adventure" aria-label="Petualangan anniversary">
-      <div class="world-panel">
+      <div class="world-column"><div class="game-options"><span>ENAM BAB, SATU CERITA</span><button id="mode-button">☁ Mode Santai</button></div><div class="world-panel">
         <div class="world-toolbar"><span><i class="live-dot"></i> PULAU KENANGAN</span><span id="world-caption">Bab 01 · Awal sebuah cerita</span></div>
         <div class="canvas-wrap">
           <canvas id="world" width="960" height="600" tabindex="0" aria-label="Peta pulau. Gunakan WASD atau tombol panah untuk bergerak dan E untuk berinteraksi. Semua tujuan juga tersedia di panel Perjalanan Kita."></canvas>
           <div class="map-corner"><span>✧</span><small>Satu pulau.<br>Seribu cerita.</small></div>
           <div class="map-legend"><i></i> kamu <span>·</span> ✦ tujuan berikutnya</div>
           <button id="interact" class="interact" hidden><kbd>E</kbd><span>Bicara</span><span>↗</span></button>
-          <div class="welcome-card" id="welcome-card"><span class="welcome-symbol">♡</span><p>UNTUK <span id="welcome-name">KAMU</span></p><h2>Cerita kita,<br>jadi petualangan.</h2><p class="welcome-description">Temukan 3 kepingan hati.<br>Ada sesuatu yang menunggumu di ujung pulau.</p><button class="primary" id="start-button">Mulai petualangan <span>→</span></button><small>± 10 menit · main dengan santai</small></div>
+          <div class="welcome-card" id="welcome-card"><span class="welcome-symbol">♡</span><p>UNTUK <span id="welcome-name">KAMU</span></p><h2>Cerita kita,<br>jadi petualangan.</h2><p class="welcome-description">Enam kepingan, enam petualangan.<br>Siapkan kencan kecil di ujung cerita.</p><button class="primary" id="start-button">Mulai petualangan <span>→</span></button><small>± 20–30 menit · santai atau tantangan</small></div>
         </div>
         <div class="world-footer"><span><span class="desktop-controls"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> bergerak <i>·</i> <kbd>E</kbd> interaksi <i>·</i> </span>Klik / ketuk peta untuk berjalan</span><button class="text-button" id="help-button">Cara main ↗</button></div>
         <div class="touch-controls" aria-label="Kontrol gerak"><button data-move="0,-1" aria-label="Bergerak ke atas">↑</button><div><button data-move="-1,0" aria-label="Bergerak ke kiri">←</button><button data-move="0,1" aria-label="Bergerak ke bawah">↓</button><button data-move="1,0" aria-label="Bergerak ke kanan">→</button></div><span>Atau ketuk tujuan di peta</span></div>
-      </div>
+      </div><div id="mission-panel" class="mission-panel" hidden></div><div class="chapter-strip"><span>01–03 <strong>Mengingat kita</strong></span><i>→</i><span>04–05 <strong>Menjelajah bersama</strong></span><i>→</i><span>06 <strong>Momen baru</strong></span></div></div>
       <aside class="journey">
-        <div class="journey-heading"><span class="eyebrow">THE LITTLE QUEST</span><h2>Perjalanan kita<span>♡</span></h2><p>Tiga kepingan. Satu cerita yang utuh.</p></div>
-        <div class="heart-progress" id="heart-progress" aria-label="0 dari 3 kepingan hati"><span>♡</span><span>♡</span><span>♡</span><small id="progress-text">0 / 3 terkumpul</small></div>
+        <div class="journey-heading"><span class="eyebrow">THE LITTLE QUEST · CHAPTER II</span><h2>Perjalanan kita<span>♡</span></h2><p>Enam kepingan. Satu cerita yang utuh.</p></div>
+        <div class="heart-progress" id="heart-progress" aria-label="0 dari 6 kepingan hati"><span>♡</span><span>♡</span><span>♡</span><span>♡</span><span>♡</span><span>♡</span><small id="progress-text">0 / 6 terkumpul</small></div>
         <div id="quest-list" class="quest-list"></div>
-        <div class="final-quest"><span class="final-icon">✉</span><div><strong>Surat di ujung pulau</strong><small id="final-status">Terbuka setelah 3 kepingan</small></div><button id="final-button" aria-label="Menuju surat di mercusuar" disabled>↗</button></div>
+        <div class="final-quest"><span class="final-icon">✉</span><div><strong>Surat di ujung pulau</strong><small id="final-status">Terbuka setelah 6 kepingan</small></div><button id="final-button" aria-label="Menuju surat di mercusuar" disabled>↗</button></div>
         <div class="journal-note"><span>catatan kecil</span><p id="journal-text">Tidak perlu cepat-cepat.<br>Hal-hal baik layak dinikmati.</p><i>with love, always</i></div>
       </aside>
     </section>

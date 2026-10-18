@@ -17,6 +17,7 @@ services:
     volumes:
       # Edit cerita/foto/musik di host, lalu refresh browser. Tidak perlu rebuild.
       - ./dist/config.js:/usr/share/nginx/html/config.js:ro
+      - ./dist/config-extra.js:/usr/share/nginx/html/config-extra.js:ro
       - ./dist/assets:/usr/share/nginx/html/assets:ro
     logging:
       driver: json-file

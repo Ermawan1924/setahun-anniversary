@@ -1,48 +1,34 @@
-# Setahun — Petualangan Kita
+# Setahun — Petualangan Kita, versi 2.0
 
-Mini game anniversary satu tahun dengan nuansa pulau pixel art, warna sage, kertas krem, dan surat cinta. Bahasa Indonesia, tanpa database, tanpa npm install, tanpa build frontend, dan tanpa CDN.
+Mini game anniversary satu tahun berbahasa Indonesia: pulau pixel art, enam chapter, dua mode permainan, dan surat cinta. Tanpa database, tanpa npm install, tanpa build frontend, dan tanpa CDN.
 
-## Isi permainan
+**Sudah memakai versi tiga level? Baca [UPGRADE.md](UPGRADE.md) sebelum menyalin file.** Konfigurasi dan foto personal lama tetap bisa digunakan.
 
-| Bagian | Permainan / hadiah |
-| --- | --- |
-| RPG sederhana | Jalan-jalan di pulau, collision, interaksi dengan NPC, serta rute otomatis ke tujuan |
-| Level 1 — Awal cerita | Tiga teka-teki pilihan ganda; jawaban salah bisa dicoba lagi; petunjuk tersedia |
-| Level 2 — Jejak kenangan | Cocokkan empat pasang kartu untuk membuka empat cerita dan foto kenangan |
-| Level 3 — Kepingan kita | Susun puzzle gambar 3 × 3 dengan menukar dua kepingan; tersedia gambar acuan dan bantuan |
-| Epilog | Surat anniversary, kejutan janji kencan, confetti, dan unduh surat sebagai TXT |
+## Enam level
 
-Ada musik instrumental bawaan yang diaktifkan melalui tombol Musik. Bisa diganti MP3 milikmu. Peta, ilustrasi puzzle, dan ikon dibuat dengan kode/SVG; paket tidak bergantung pada font, gambar, atau audio eksternal.
+| Level | Challenge | Hadiah |
+| --- | --- | --- |
+| 1. Awal cerita | Tebak-tebakan dengan petunjuk | Hati pertama |
+| 2. Jejak kenangan | Cocokkan 4/6 pasang kartu | Album foto + hati kedua |
+| 3. Kepingan kita | Puzzle gambar 3×3 / 4×4 | Hati ketiga |
+| 4. Urutan cerita | Susun timeline dari awal sampai terbaru | Cerita setiap momen + hati keempat |
+| 5. Berburu hadiah | Cari kerang, pita, dan tiket lewat petunjuk NPC; kembali menyerahkan temuan | Hati kelima |
+| 6. Kencan untuk kita | Rangkai buket, pilih bahan resep, pecahkan kode kotak hadiah, lalu kembali menata meja | Hati keenam |
+| Epilog | Kunjungi mercusuar setelah enam hati | Surat, janji kencan, confetti, unduh TXT |
 
-**Nama pasangan, tanggal, dan kenangan masih berupa contoh.** Edit `dist/config.js` sebelum diberikan ke pasangan. Panduan lengkap: [PANDUAN-EDIT.md](PANDUAN-EDIT.md).
+Peta dapat dijelajahi dengan WASD/panah, tombol sentuh, atau klik. Pemilihan level menavigasikan karakter otomatis. Level 5 dan 6 menggunakan lokasi dan inventaris nyata dalam game.
 
-## Jalankan dengan Docker Compose
+## Mulai dengan Docker
 
-Prasyarat: Docker Engine + Compose plugin atau Docker Desktop dengan Linux containers. Jalankan dari folder yang berisi `docker-compose.yml`:
+Memerlukan Docker Engine + Compose plugin atau Docker Desktop dengan Linux containers. Jalankan dari folder proyek:
 
 ```bash
 docker compose up -d --build
 ```
 
-Buka **http://localhost:8080**. Dari HP dalam jaringan yang sama, gunakan `http://IP-KOMPUTER:8080` dan izinkan port tersebut pada firewall jaringan lokal jika diperlukan. Jika memakai VM Ubuntu bridged, gunakan IP VM.
+Buka **http://localhost:8080**. Dari HP di jaringan sama, gunakan `http://IP-KOMPUTER:8080`. Untuk VM bridged, gunakan IP VM. Sesuaikan firewall jaringan lokal jika diperlukan.
 
-Mengubah port bersifat opsional. Salin `.env.example` menjadi `.env`, lalu ubah `PORT=8080` menjadi misalnya `PORT=8088`:
-
-```bash
-# Linux / macOS
-cp .env.example .env
-
-# PowerShell (gunakan ini sebagai pengganti cp di atas)
-Copy-Item .env.example .env
-```
-
-Setelah mengubah `.env`:
-
-```bash
-docker compose up -d
-```
-
-Perintah operasional:
+Port opsional: salin `.env.example` menjadi `.env`, ubah `PORT=8080` (misalnya 8088), lalu jalankan `docker compose up -d`.
 
 ```bash
 docker compose ps
@@ -52,80 +38,69 @@ docker compose exec anniversary wget -qO- http://127.0.0.1:8080/healthz
 docker compose down
 ```
 
-Endpoint `/healthz` mengembalikan `ok`. Image mempunyai health check. Container menggunakan Nginx non-root pada port internal 8080, root filesystem read-only, dan direktori temporary di `/tmp`.
+`/healthz` menghasilkan `ok`. Container menggunakan Nginx non-root pada port internal 8080, root filesystem read-only, temporary directory `/tmp`, serta health check bawaan image proyek.
 
-`dist/config.js` dan folder `dist/assets/` di-bind mount oleh Compose. Sesudah mengedit teks atau menambah foto/musik, refresh browser. Jika editor mengganti file dengan cara rename dan perubahan belum terlihat, jalankan `docker compose up -d --force-recreate`. Jika mengubah HTML/CSS/JS permainan, jalankan kembali `docker compose up -d --build`.
+Compose memasang `dist/config.js`, `dist/config-extra.js`, dan `dist/assets/` sebagai bind mount read-only. Edit konten lalu refresh browser. Jika editor mengganti inode file dan perubahan belum terbaca, recreate:
 
-## Jalankan Dockerfile langsung
+```bash
+docker compose up -d --build --force-recreate
+```
+
+Perubahan `index.html`, `app.js`, `engine.js`, atau CSS memerlukan rebuild. Konfigurasi Docker memakai HTTP; untuk hosting internet gunakan reverse proxy/domain HTTPS sendiri.
+
+Dockerfile langsung juga didukung:
 
 ```bash
 docker build -t setahun-anniversary:local .
 docker run --rm -p 8080:8080 --name setahun-anniversary setahun-anniversary:local
 ```
 
-Mode ini mengambil konfigurasi saat build. Ulangi build jika isi berubah, atau tambahkan bind mount sendiri.
+Dalam mode langsung ini, konten mengikuti saat build (tanpa bind mount Compose).
 
-## Tanpa Docker
+## Personalisasi
 
-Semua frontend berada di `dist/`. Jika sudah memiliki Python 3:
+- **`dist/config.js`**: nama, tanggal, soal, foto/teks kenangan, gambar puzzle, musik, surat akhir.
+- **`dist/config-extra.js`**: timeline khusus, petunjuk berburu, kartu tambahan, urutan bunga, resep, kode hadiah.
+- **`dist/assets/`**: foto dan musik milikmu. JPG/PNG/WebP didukung; puzzle sebaiknya memakai gambar persegi.
+- **[PANDUAN-EDIT.md](PANDUAN-EDIT.md)**: contoh lengkap.
+
+Konten paket masih contoh. Foto `nyanyu.jpg` dan MP3 personal tidak termasuk; salin dari proyek milikmu. Melodi instrumental bawaan bisa diaktifkan tanpa file audio tambahan. Tidak ada autoplay.
+
+## Mode permainan
+
+**Santai:** empat pasang kartu, puzzle 3×3, petunjuk bebas, tanggal timeline terlihat, navigasi bantuan berburu tersedia, urutan bunga tetap terlihat, tanpa timer.
+
+**Tantangan:** enam pasang kartu, puzzle 4×4, dua petunjuk untuk level tebak-tebakan, dua bantuan puzzle, satu bantuan timeline, tanggal timeline disembunyikan, benda buruan baru terlihat dari dekat atau setelah petunjuk lokasi dibuka, dan urutan bunga ditampilkan empat detik sebelum diingat kembali.
+
+Timer opsional (default mati) hanya berlaku untuk kartu 3 menit, puzzle 5 menit, dan timeline 3 menit. Tab tidak aktif menjeda waktu. Saat habis, pilih coba lagi atau beralih ke Santai. Hati/inventaris sebelumnya tidak hilang. Mode dapat diganti lewat tombol di atas peta.
+
+## Progres dan privasi
+
+Level selesai, mode, posisi, inventaris berburu, dan perlengkapan kencan disimpan di `localStorage`. Tidak disinkronkan antar-browser atau alamat website. Progres versi satu otomatis dimigrasikan dengan `saveKey` dan origin yang sama. Mini game yang ditutup sebelum selesai dimulai ulang saat dibuka lagi; hati dan barang yang diperoleh tetap tersimpan. Jika penyimpanan browser diblokir, permainan tetap berjalan selama halaman terbuka. Tombol Ulang cerita meminta konfirmasi.
+
+Tidak ada akun, admin panel, backend, analytics, atau pengiriman progres. Foto, teks, dan jawaban adalah file statis yang bisa dibaca pengunjung yang punya akses. Jangan menyimpan kredensial di konfigurasi.
+
+## Menjalankan tanpa Docker
+
+Dengan Python 3:
 
 ```bash
 python3 -m http.server 8080 --directory dist
 ```
 
-Di Windows dapat menggunakan `py -m http.server 8080 --directory dist`. Tidak perlu Node.js untuk menjalankan game. Folder `dist/` juga dapat ditempatkan di hosting statis.
+Di Windows dapat memakai `py -m http.server 8080 --directory dist`. Node.js tidak diperlukan untuk bermain. Folder `dist/` dapat dipasang di hosting statis.
 
-## Kontrol
+## Verifikasi
 
-- Desktop: klik Mulai, WASD / panah untuk berjalan, E untuk berinteraksi.
-- Mouse / HP: ketuk lokasi yang dapat dilalui di peta, atau gunakan tombol arah.
-- Klik salah satu level di **Perjalanan kita** untuk berjalan ke lokasinya secara otomatis.
-- Semua mini game memakai tombol yang bisa dioperasikan dengan Tab dan Enter. Escape menutup dialog.
-- Musik harus dinyalakan dengan klik; tidak autoplay.
-
-## Progres dan data
-
-- Level yang selesai serta posisi karakter tersimpan di `localStorage` browser. Progres tidak disinkronkan antar-HP/browser/domain.
-- Jika penyimpanan browser diblokir, game tetap dapat dimainkan selama halaman masih terbuka.
-- Mini game yang ditutup sebelum selesai akan mulai ulang; kepingan hati dari level sebelumnya tetap tersimpan.
-- Tombol **Ulang cerita** meminta konfirmasi sebelum menghapus progres pada browser ini.
-- Tidak ada akun, admin panel, backend, database, analytics, atau pengiriman data permainan.
-- Semua teks, foto, dan jawaban merupakan file statis yang dapat dibaca pengunjung yang bisa mengakses game. Jangan menaruh password atau rahasia akun di konfigurasi. Docker Compose ini menyediakan HTTP; bila dipublikasikan di internet, gunakan reverse proxy/domain HTTPS milikmu.
-
-## Struktur source
-
-```text
-setahun-anniversary/
-  dist/
-    index.html       # Halaman permainan
-    style.css        # Tampilan responsif
-    app.js           # UI, map renderer, audio, mini games
-    engine.js        # Pergerakan, route, puzzle, progress
-    config.js        # Seluruh konten personal
-    assets/
-      our-world.svg  # Gambar puzzle bawaan
-      favicon.svg
-  tests/game.test.cjs
-  Dockerfile
-  docker-compose.yml
-  nginx.conf
-  .env.example
-  package.json
-  README.md
-  PANDUAN-EDIT.md
-```
-
-## Pemeriksaan
-
-Jika Node.js 18+ tersedia, tanpa install dependency:
+Dengan Node.js 18+, tanpa install dependency:
 
 ```bash
 npm test
 npm run check
 ```
 
-Paket telah melewati sembilan pengujian logika: konektivitas semua tujuan, collision, urutan unlock, reward idempotent, pemulihan progres, solvabilitas 300 puzzle acak, pertukaran kepingan, pasangan kartu, validitas konfigurasi, dan pembatasan path asset (sebagian diuji dalam test yang sama). Syntax JavaScript juga diperiksa.
+18 pengujian logika mencakup seluruh rute, collision, unlock berurutan, migrasi progres, inventaris dan pengantaran barang, urutan timeline, recipe, konten default, serta solvabilitas puzzle 3×3/4×4. Syntax JavaScript, referensi asset/HTML, dan YAML Compose diperiksa.
 
-**Batas verifikasi saat pembuatan:** lingkungan pengerjaan tidak menyediakan Docker maupun jalur QA browser yang didukung. Build/start container dan tampilan/interaksi browser belum diuji langsung. Jalankan perintah Compose di atas lalu coba satu putaran penuh pada browser target sebelum dipakai untuk kejutan.
+**Batas verifikasi:** browser interaktif dan Docker tidak tersedia lewat jalur QA yang didukung di lingkungan pembuatan. Container belum dibuild/dijalankan langsung dan tampilan browser belum diverifikasi secara visual. Coba satu putaran penuh pada browser target sebelum dipakai sebagai kejutan.
 
-Referensi konfigurasi: [Docker Compose services](https://docs.docker.com/reference/compose-file/services/) dan [Nginx HTTP core module](https://nginx.org/en/docs/http/ngx_http_core_module.html).
+Referensi: [Docker Compose](https://docs.docker.com/reference/compose-file/services/) dan [Nginx](https://nginx.org/en/docs/http/ngx_http_core_module.html).

@@ -1,7 +1,7 @@
 /* EDIT DI SINI. Lihat PANDUAN-EDIT.md untuk foto, pertanyaan, dan musik. */
 window.ANNIVERSARY = {
   saveKey: 'setahun-kita-v1',
-  couple: { from: 'Aku', to: 'Kamu', startDate: '2025-10-18' },
+  couple: { from: 'Aku', to: 'Kamu', startDate: '2025-10-25' },
   title: 'Setahun, dan masih kamu.',
   subtitle: 'Ada hal-hal kecil yang membuat perjalanan ini terasa istimewa. Yuk, kita temukan lagi, satu per satu.',
   music: '', // Contoh: 'assets/music.mp3'. Kosong = melodi instrumental bawaan.
@@ -16,7 +16,7 @@ window.ANNIVERSARY = {
     { icon: '✈', title: 'Jalan berdua', date: 'Petualangan kita', text: 'Tujuannya bisa ke mana saja. Yang penting, ada kamu di sebelahku. Ganti dengan perjalanan favorit kalian.', image: '' },
     { icon: '✿', title: 'Sampai hari ini', date: 'Satu tahun', text: 'Terima kasih untuk hal-hal kecil yang mungkin tidak selalu sempat kuucapkan. Tambahkan kenangan paling berkesan kalian.', image: '' }
   ],
-  puzzleImage: 'assets/our-world.svg',
+  puzzleImage: 'assets/nyanyu.jpg', // Ganti dengan foto kalian. Bisa juga berupa ilustrasi atau pola. Kosong = tidak ada puzzle.
   letter: {
     greeting: 'Untuk kamu, tempat pulang favoritku.',
     paragraphs: [
