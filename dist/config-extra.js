@@ -9,9 +9,9 @@ window.ANNIVERSARY_EXTRA = {
     { icon:'✧', title:'Harapan kita' }
   ],
   treasures: {
-    shell: { name:'Kerang kecil', icon:'◔', clue:'Di ujung barat pulau, ombak menyimpan sebuah benda kecil. Telusuri pesisir di sebelah kiri pondok.', hint:'Cari pantai di kiri bawah Pondok Cerita.', note:'Hal sederhana pun bisa menjadi hadiah kalau ditemukan bersamamu.' },
-    ribbon: { name:'Pita harapan', icon:'⋈', clue:'Bulan kecil menjaga harapan kita. Carilah di sebelah kanan bangunan bulan di bukit utara.', hint:'Tepat di sebelah kanan Bukit Harapan.', note:'Satu pita untuk mengikat harapan yang ingin kita jaga.' },
-    ticket: { name:'Tiket berdua', icon:'▤', clue:'Setelah lelah berjalan, kita duduk di dekat taman merah muda. Ada sesuatu di sekitar bangku.', hint:'Bangku ada di selatan Taman Kenangan.', note:'Tiket ke mana pun terasa lebih berharga jika perginya bersama kamu.' }
+    shell: { name:'Kucing', icon:'🐈', clue:'Di ujung barat pulau, ombak menyimpan sebuah anak kucing kecil. Telusuri pesisir di sebelah kiri pondok.', hint:'Cari pantai di kiri bawah Pondok Cerita.', note:'Hal sederhana pun bisa menjadi hadiah kalau ditemukan bersamamu.' },
+    ribbon: { name:'Cherry', icon:'🍒', clue:'Bulan kecil menjaga harapan kita. Carilah di sebelah kanan bangunan bulan di bukit utara.', hint:'Tepat di sebelah kanan Bukit Harapan.', note:'Satu pita untuk mengikat harapan yang ingin kita jaga.' },
+    ticket: { name:'Tiket berdua', icon:'💍', clue:'Setelah lelah berjalan, kita duduk di dekat taman merah muda. Ada sesuatu di sekitar bangku.', hint:'Bangku ada di selatan Taman Kenangan.', note:'Tiket ke mana pun terasa lebih berharga jika perginya bersama kamu.' }
   },
   date: {
     flowers: {

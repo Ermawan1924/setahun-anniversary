@@ -6,9 +6,9 @@ Konten personal level 1–3, foto, musik, dan surat ada di **`dist/config.js`**.
 
 ```js
 couple: {
-  from: 'Mawan',
-  to: 'Nama pasangan',
-  startDate: '2025-10-18'
+  from: 'Ermawan',
+  to: 'Erine',
+  startDate: '2025-10-25'
 },
 title: 'Setahun, dan masih kamu.',
 subtitle: 'Ada hal-hal kecil yang membuat perjalanan ini terasa istimewa. Yuk, kita temukan lagi, satu per satu.',
