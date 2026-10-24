@@ -9,8 +9,8 @@ window.ANNIVERSARY_EXTRA = {
     { icon:'✧', title:'Harapan kita' }
   ],
   treasures: {
-    shell: { name:'Kucing', icon:'🐈', clue:'Di ujung barat pulau, ombak menyimpan sebuah anak kucing kecil. Telusuri pesisir di sebelah kiri pondok.', hint:'Cari pantai di kiri bawah Pondok Cerita.', note:'Hal sederhana pun bisa menjadi hadiah kalau ditemukan bersamamu.' },
-    ribbon: { name:'Cherry', icon:'🍒', clue:'Bulan kecil menjaga harapan kita. Carilah di sebelah kanan bangunan bulan di bukit utara.', hint:'Tepat di sebelah kanan Bukit Harapan.', note:'Satu pita untuk mengikat harapan yang ingin kita jaga.' },
+    shell: { name:'Kucing', icon:'🐈', clue:'Di ujung barat pulau, sebuah anak kucing kecil bersembunyi. Telusuri pesisir di sebelah kiri pondok.', hint:'Cari pantai di kiri bawah Pondok Cerita.', note:'Hal sederhana pun bisa menjadi hadiah kalau ditemukan bersamamu.' },
+    ribbon: { name:'Cherry', icon:'🍒', clue:'Buah kesukaan Erine yang mahal itu. Carilah di sebelah kanan bangunan bulan di bukit utara.', hint:'Tepat di sebelah kanan Bukit Harapan.', note:'Satu pita untuk mengikat harapan yang ingin kita jaga.' },
     ticket: { name:'Tiket berdua', icon:'💍', clue:'Setelah lelah berjalan, kita duduk di dekat taman merah muda. Ada sesuatu di sekitar bangku.', hint:'Bangku ada di selatan Taman Kenangan.', note:'Tiket ke mana pun terasa lebih berharga jika perginya bersama kamu.' }
   },
   date: {
@@ -22,9 +22,9 @@ window.ANNIVERSARY_EXTRA = {
     },
     food: {
       title:'Bekal favorit kita',
-      recipe:'Sandwich keju dan tomat: roti + keju + tomat.',
-      ingredients:['roti','keju','tomat'],
-      options:[{id:'roti',label:'Roti',icon:'▱'},{id:'keju',label:'Keju',icon:'◩'},{id:'tomat',label:'Tomat',icon:'●'},{id:'cabai',label:'Cabai',icon:'♨'},{id:'cokelat',label:'Cokelat',icon:'▦'},{id:'kopi',label:'Kopi',icon:'☕'}]
+      recipe:'Topoki: Kue Beras + Air panas + bumbu cabai.',
+      ingredients:['beras','air panas','bumbu cabai'],
+      options:[{id:'beras',label:'beras',icon:'🌾'},{id:'air panas',label:'air panas',icon:'💧'},{id:'bumbu cabai',label:'bumbu cabai',icon:'🌶️'},{id:'Roti',label:'Roti',icon:'🍞'},{id:'cokelat',label:'Cokelat',icon:'🍫'},{id:'kopi',label:'Kopi',icon:'☕'}]
     },
     gift: {
       code:'123',

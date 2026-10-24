@@ -6,11 +6,11 @@
   [[4,5],[5,5],[6,5],[4,6],[5,6],[6,6],[12,2],[13,2],[20,2],[20,3],[21,2],[21,3]].forEach(p=>solids.add(p.join(',')));
   const stops = [
     { id: 'quiz', x:6, y:8, title:'Awal cerita', sub:'Tebak-tebakan', icon:'☕', label:'Pondok Cerita', intro:'Penjaga pondok menyimpan kepingan hati pertama. Jawab semua teka-teki kecil untuk mendapatkannya.' },
-    { id:'memory', x:17, y:7, title:'Jejak kenangan', sub:'Kartu & kenangan', icon:'✿', label:'Taman Kenangan', intro:'Kenangan baik selalu punya pasangannya. Cocokkan semua kartu, lalu buka album kecil kita.' },
-    { id:'puzzle', x:12, y:4, title:'Kepingan kita', sub:'Puzzle gambar', icon:'▧', label:'Bukit Harapan', intro:'Kadang, kita hanya perlu merapikan kepingan kecil untuk melihat gambaran yang utuh.' },
-    { id:'timeline', x:9, y:7, title:'Urutan cerita', sub:'Timeline kenangan', icon:'◷', label:'Telaga Waktu', intro:'Angin mengacak halaman album kita. Susun kenangan dari yang paling awal sampai yang terbaru.' },
-    { id:'hunt', x:18, y:10, title:'Berburu hadiah', sub:'Petunjuk & eksplorasi', icon:'⌖', label:'Pos Penjelajah', intro:'Tiga benda tersembunyi di pulau. Baca petunjuk penjaga, temukan bendanya, lalu kembali ke sini.' },
-    { id:'date', x:14, y:10, title:'Kencan untuk kita', sub:'Bunga, bekal & hadiah', icon:'❀', label:'Kebun Senja', intro:'Kencan kecil kita hampir siap. Kunjungi tiga penjaga untuk merangkai buket, menyiapkan bekal, dan membuka kotak hadiah.' },
+    { id:'memory', x:17, y:7, title:'Jejak kenangan', sub:'Kartu & kenangan', icon:'🃏', label:'Taman Kenangan', intro:'Kenangan baik selalu punya pasangannya. Cocokkan semua kartu, lalu buka album kecil kita.' },
+    { id:'puzzle', x:12, y:4, title:'Kepingan kita', sub:'Puzzle gambar', icon:'🧩', label:'Bukit Harapan', intro:'Kadang, kita hanya perlu merapikan kepingan kecil untuk melihat gambaran yang utuh.' },
+    { id:'timeline', x:9, y:7, title:'Urutan cerita', sub:'Timeline kenangan', icon:'⏰', label:'Telaga Waktu', intro:'Angin mengacak halaman album kita. Susun kenangan dari yang paling awal sampai yang terbaru.' },
+    { id:'hunt', x:18, y:10, title:'Berburu hadiah', sub:'Petunjuk & eksplorasi', icon:'🌟', label:'Pos Penjelajah', intro:'Tiga benda tersembunyi di pulau. Baca petunjuk penjaga, temukan bendanya, lalu kembali ke sini.' },
+    { id:'date', x:14, y:10, title:'Kencan untuk kita', sub:'Bunga, bekal & hadiah', icon:'🌼', label:'Kebun Senja', intro:'Kencan kecil kita hampir siap. Kunjungi tiga penjaga untuk merangkai buket, menyiapkan bekal, dan membuka kotak hadiah.' },
     { id:'final', x:19, y:4, title:'Surat di ujung pulau', label:'Mercusuar Kita' }
   ];
   const LEVELS=stops.length-1;
